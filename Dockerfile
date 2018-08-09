@@ -3,6 +3,7 @@ FROM debian:9-slim
 ENV DEBIAN_FRONTEND noninteractive
 
 ENV LANG C.UTF-8
+ENV NET2O_CONF /net2o/config
 
 VOLUME /net2o
 WORKDIR /net2o
