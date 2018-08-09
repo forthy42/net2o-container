@@ -1,12 +1,19 @@
-FROM mtrute/gforth-container:latest
+FROM debian:9-slim
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV NET2O_CONF /net2o/.net2o/config
-ENV HOME /net2o
+
+ENV LANG C.UTF-8
 
 VOLUME /net2o
+WORKDIR /net2o
 
-RUN apt-get update && apt-get upgrade -y \
-    && apt-get install -y net2o
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y  software-properties-common apt-utils gnupg apt-transport-https curl \
+    && curl -L https://net2o.de/bernd@net2o.de-yubikey.pgp.asc | apt-key add - \
+    && apt-add-repository 'deb https://net2o.de/debian testing main' \
+    && apt-get update && apt-get install -y net2o libtool-bin \
+    && apt-get autoremove -y
 
-CMD [ "n2o" "gforth" ]
+CMD [ "n2o" ]
+
+ENTRYPOINT [ "n2o" ]
