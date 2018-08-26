@@ -13,7 +13,9 @@ Passphrase: ••••••
 ==== opened: ....
 ```
 
-The config file /net2o/config shall look like
+The config file in the net2o directory config has to reflect the
+file and path names as seen inside the container, not the actual path
+names.
 
 ```shell
 date=2
@@ -23,3 +25,4 @@ keys="/net2o/keys"
 ```
 
 see https://fossil.net2o.de for more information.
+
