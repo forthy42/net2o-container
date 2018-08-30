@@ -1,7 +1,7 @@
-FROM mtrute/gforth-container:0.7.9_20180815
+FROM mtrute/gforth-container:0.7.9_20180830
 
 # change to trunk 
-ENV VERSION 0.7.5-20180823
+ENV VERSION 0.7.5-20180830
 
 VOLUME /net2o
 WORKDIR /net2o
