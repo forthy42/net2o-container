@@ -1,13 +1,18 @@
-FROM mtrute/gforth-container:0.7.9_20180830
+
+ARG GFORTHVERSION=0.7.9_20180830
+ARG NET2OVERSION=0.7.5-20180830
+
+FROM mtrute/gforth-container:${GFORTHVERSION}
+
+LABEL maintainer="Matthias Trute <mtrute@web.de>"
 
 # change to trunk 
-ENV VERSION 0.7.5-20180830
+ENV VERSION ${NET2OVERSION}
 
 VOLUME /net2o
 WORKDIR /net2o
-
-ENV USER root
 USER root
+ENV USER root
 ENV LANG C.UTF-8
 ENV NET2O_CONF /net2o/config
 
@@ -22,12 +27,10 @@ RUN \
     && git clone https://github.com/forthy42/ed25519-donna.git \
     && ./autogen.sh \
     && make configs && make no-config && make install-libs \
-    && git clone https://github.com/GeraldWodni/swig.git \
-    && cd swig && ./autogen.sh && ./configure --prefix=/usr && make && make install && cd - \
     && make libcc \
     && make install \
-    && n2o version \
     && cd / \
+    && n2o version \
     && apk del .build-deps \
     && apk add libtool gcc \
     && rm -rf /tmp/net2o-src
