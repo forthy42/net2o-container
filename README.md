@@ -1,28 +1,37 @@
 net2o in a container
 
-Uses the directory /my/home/net2o of the docker host to store
+Uses the directory ~/net2o of the docker host to store
 persistent data such as keys or chat logs. Inside the container
 this directory is called /net2o regardless where it is on the
-host - see the -v option below.
+host -- see the -v option below.
 
 ```shell
-$ docker pull mtrute/net2o-container
-$ mkdir /my/home/net2o
-$ docker run -ti --rm -v /my/home/net2o:/net2o mtrute/net2o-container n2o keylist
-Passphrase: ••••••  
-==== opened: ....
+$ mkdir ~/net2o
 ```
 
-The config file in the net2o directory config has to reflect the
-file and path names as seen inside the container, not the actual path
-names.
+Put a config text file in the net2o directory
 
 ```shell
+$ cat ~/net2o/config
 date=2
 chats="/net2o/chats"
 keys="/net2o/keys"
 .net2o="/net2o"
+$
 ```
+optionally copy existing net2o files into this directory keeping the directory structure intact.
+Now run the container
 
-see https://fossil.net2o.de for more information.
+```shell
+$ docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) mtrute/net2o-container n2o keylist
+Passphrase: ••••••  
+==== opened: ....
+$ docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) mtrute/net2o-container n2o chat groupname
+Passphrase: ••••••  
+==== opened: ....
+...
+/bye
+$
+```
+see https://fossil.net2o.de for more information
 
