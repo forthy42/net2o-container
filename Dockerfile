@@ -16,9 +16,9 @@ ENV USER root
 ENV LANG C.UTF-8
 ENV NET2O_CONF /net2o/config
 
-RUN \
-    apk add --no-cache --virtual .build-deps \ 
-      fossil git build-base m4 file libtool libffi-dev libltdl g++ mesa-dev libx11-dev \
+RUN apk add --no-cache build-base \
+    && apk add --no-cache --virtual .build-deps \ 
+      fossil git m4 file libtool libffi-dev libltdl g++ mesa-dev libx11-dev \
       autoconf automake pcre-dev bison boost zlib-dev coreutils mesa-gles \
     && mkdir /tmp/net2o-src \
     && cd /tmp/net2o-src \
@@ -30,10 +30,10 @@ RUN \
     && make libcc \
     && make install \
     && cd / \
-    && n2o version \
     && apk del .build-deps \
     && apk add libtool gcc \
-    && rm -rf /tmp/net2o-src
+    && rm -rf /tmp/net2o-src \
+    && n2o version 
 
 CMD [ "n2o" ]
 
