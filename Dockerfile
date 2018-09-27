@@ -31,7 +31,7 @@ RUN apk add --no-cache build-base \
     && make install \
     && cd / \
     && apk del .build-deps \
-    && apk add libtool gcc \
+    && apk add libtool gcc build-base \
     && rm -rf /tmp/net2o-src \
     && n2o version 
 
