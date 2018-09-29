@@ -1,5 +1,7 @@
 # net2o in a container
 
+see https://fossil.net2o.de for more information
+
 Uses the directory `~/net2o` of the docker host to store
 persistent data such as keys or chat logs. Inside the container
 this directory is called `/net2o` regardless where it is on the
@@ -33,4 +35,4 @@ Passphrase: ••••••
 /bye
 $
 ```
-see https://fossil.net2o.de for more information
+
