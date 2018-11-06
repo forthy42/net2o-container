@@ -11,7 +11,8 @@ host -- see the `-v` option below.
 $ mkdir ~/net2o
 ```
 
-Put a config text file in the `net2o` directory
+Put a config text file in the `~/net2o` directory. Note the
+slightly different pathnames.
 
 ```shell
 $ cat ~/net2o/config
@@ -25,10 +26,10 @@ optionally copy *other* existing net2o files into this directory keeping the dir
 intact. Now run the container
 
 ```shell
-$ docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) mtrute/net2o-container n2o keylist
+$ docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) mtrute/net2o-container keylist
 Passphrase: ••••••  
 ==== opened: ....
-$ docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) mtrute/net2o-container n2o chat groupname
+$ docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) mtrute/net2o-container chat groupname
 Passphrase: ••••••  
 ==== opened: ....
 ...
@@ -36,3 +37,12 @@ Passphrase: ••••••
 $
 ```
 
+Hint: use a shell alias to shorten the command line
+
+```
+$ alias n2o="docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) mtrute/net2o-container"
+$ n2o keylist
+...
+$ n2o chat group@user
+....
+```
