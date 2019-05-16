@@ -1,6 +1,6 @@
 
-ARG GFORTHVERSION=0.7.9_20190509
-ARG NET2OVERSION=0.8.8-20190509
+ARG GFORTHVERSION=0.7.9_20190516
+ARG NET2OVERSION=0.8.8-20190516
 
 FROM mtrute/gforth-container:${GFORTHVERSION}
 
@@ -26,7 +26,7 @@ RUN apk add --no-cache build-base \
     && fossil open net2o.fossil $VERSION  \
     && git clone https://github.com/forthy42/ed25519-donna.git \
     && ./autogen.sh \
-    && make configs && make no-config && make install-libs \
+    && make configs && make no-config && make install-libs -i \
     && make libcc \
     && make install \
     && cd / \
