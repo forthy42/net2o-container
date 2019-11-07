@@ -1,10 +1,10 @@
 
-ARG GFORTHVERSION=0.7.9_20190627
-ARG NET2OVERSION=0.9.0-20190627
+ARG GFORTHVERSION=0.7.9_20191107
+ARG NET2OVERSION=0.9.3-20191107
 
 FROM mtrute/gforth-container:${GFORTHVERSION}
 
-LABEL maintainer="Matthias Trute <mtrute@web.de>"
+LABEL maintainer="Bernd Paysan <bernd@net2o.de>"
 
 # change to trunk 
 ENV VERSION ${NET2OVERSION}
