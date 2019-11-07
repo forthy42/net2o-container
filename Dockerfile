@@ -2,7 +2,7 @@
 ARG GFORTHVERSION=0.7.9_20191107
 ARG NET2OVERSION=0.9.3-20191107
 
-FROM forthy42/gforth-container:${GFORTHVERSION}
+FROM forthy42/gforth:${GFORTHVERSION}
 
 LABEL maintainer="Bernd Paysan <bernd@net2o.de>"
 

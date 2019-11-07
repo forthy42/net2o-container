@@ -22,14 +22,22 @@ keys="/net2o/keys"
 .net2o="/net2o"
 $
 ```
-optionally copy *other* existing net2o files into this directory keeping the directory structure 
-intact. Now run the container
+optionally copy *other* existing net2o files into this directory keeping the
+directory structure intact.
+
+Fetch your container
 
 ```shell
-$ docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) forthy42/net2o-container keylist
+$ docker pull forthy42/net2o
+```
+
+Now run the container
+
+```shell
+$ docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) forthy42/net2o keylist
 Passphrase: ••••••  
 ==== opened: ....
-$ docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) forthy42/net2o-container chat groupname
+$ docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) forthy42/net2o chat groupname
 Passphrase: ••••••  
 ==== opened: ....
 ...
@@ -40,7 +48,7 @@ $
 Hint: use a shell alias to shorten the command line
 
 ```
-$ alias n2o="docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) forthy42/net2o-container"
+$ alias n2o="docker run -ti --rm -v ~/net2o:/net2o --user $(id -u) forthy42/net2o"
 $ n2o keylist
 ...
 $ n2o chat group@user
