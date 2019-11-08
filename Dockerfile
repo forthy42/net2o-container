@@ -25,13 +25,12 @@ RUN apk add --no-cache build-base \
     && fossil clone https://fossil.net2o.de/net2o net2o.fossil \
     && fossil open net2o.fossil $VERSION  \
     && git clone https://github.com/forthy42/ed25519-donna.git \
-    && ./autogen.sh \
+    && ./autogen.sh --prefix=/usr \
     && make configs && make no-config && make install-libs -i \
     && make libcc \
     && make install libcc-install \
     && cd / \
     && apk del .build-deps \
-    && apk add libtool gcc build-base \
     && rm -rf /tmp/net2o-src \
     && n2o version 
 
