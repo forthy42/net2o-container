@@ -47,7 +47,7 @@ $
 
 Hint: use a shell alias to shorten the command line
 
-```
+```shell
 $ alias n2o="docker run -ti --rm -v ~/net2o:/net2o --user $(id -u):$(id -g) forthy42/net2o"
 $ n2o keylist
 ...
