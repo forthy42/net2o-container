@@ -28,7 +28,7 @@ RUN apk add --no-cache build-base \
     && ./autogen.sh \
     && make configs && make no-config && make install-libs -i \
     && make libcc \
-    && make install \
+    && make install libcc-install \
     && cd / \
     && apk del .build-deps \
     && apk add libtool gcc build-base \
