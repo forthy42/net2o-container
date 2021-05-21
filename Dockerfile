@@ -30,8 +30,7 @@ RUN cd /tmp \
     && make install libcc-install \
     && cd / \
     && apk del .build-deps \
-    && rm -rf /tmp/net2o \
-    && n2o version 
+    && rm -rf /tmp/net2o
 
 CMD [ "n2o" ]
 
