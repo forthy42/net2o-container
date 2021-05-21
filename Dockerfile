@@ -25,7 +25,7 @@ RUN cd /tmp \
     && cd net2o \
     && git clone https://github.com/forthy42/ed25519-donna.git \
     && ./autogen.sh --prefix=/usr \
-    && make configs && make no-config && make install-libs -i \
+    && make no-config && make install-libs -i \
     && make libcc \
     && make install libcc-install \
     && cd / \
