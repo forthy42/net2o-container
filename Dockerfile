@@ -1,6 +1,6 @@
 
-ARG GFORTHVERSION=0.7.9_20210520
-ARG NET2OVERSION=0.9.9-20210520
+ARG GFORTHVERSION=0.7.9_20210610
+ARG NET2OVERSION=0.9.9-20210610
 
 FROM forthy42/gforth:latest
 
@@ -21,7 +21,7 @@ RUN apk add --no-cache build-base \
       git m4 file libtool libffi-dev libltdl g++ mesa-dev libx11-dev \
       autoconf automake boost zlib-dev coreutils mesa-gles
 RUN cd /tmp \
-    && git clone https://github.com/forthy42/net2o net2o \
+    && git clone --branch $VERSION https://github.com/forthy42/net2o net2o \
     && cd net2o \
     && git clone https://github.com/forthy42/ed25519-donna.git \
     && ./autogen.sh --prefix=/usr \
